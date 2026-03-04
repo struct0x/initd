@@ -1,0 +1,12 @@
+go 1.25.5
+
+use (
+	.
+	./initddapr
+	./initddatadog
+	./initddb
+	./initdhttp
+	./initdops
+	./initdotel
+	./example
+)
