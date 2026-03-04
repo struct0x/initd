@@ -1,0 +1,4 @@
+github.com/struct0x/envconfig v1.0.0 h1:fzXgxw5OfJd7yqEmlfBc3FOwJVpe5aTUsaYSGiVDrrE=
+github.com/struct0x/envconfig v1.0.0/go.mod h1:1f390j2SSRxJkGXlALEvuzzoI5qVizIDx6M38IwjIsg=
+github.com/struct0x/exitplan v1.0.0 h1:5s1MTQuPmVmEkAPc7oOHWLo5nvk2PM165O/Q//3V3FA=
+github.com/struct0x/exitplan v1.0.0/go.mod h1:QB+vcln4bciJ+EvISVAzp5h02knokPcr8ZkeuRbHzbQ=
