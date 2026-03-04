@@ -1,4 +1,8 @@
-github.com/struct0x/envconfig v1.0.0 h1:fzXgxw5OfJd7yqEmlfBc3FOwJVpe5aTUsaYSGiVDrrE=
-github.com/struct0x/envconfig v1.0.0/go.mod h1:1f390j2SSRxJkGXlALEvuzzoI5qVizIDx6M38IwjIsg=
-github.com/struct0x/exitplan v1.0.0 h1:5s1MTQuPmVmEkAPc7oOHWLo5nvk2PM165O/Q//3V3FA=
-github.com/struct0x/exitplan v1.0.0/go.mod h1:QB+vcln4bciJ+EvISVAzp5h02knokPcr8ZkeuRbHzbQ=
+github.com/google/go-cmp v0.7.0 h1:wk8382ETsv4JYUZwIsn6YpYiWiBsYLSJiTsyBybVuN8=
+github.com/google/go-cmp v0.7.0/go.mod h1:pXiqmnSA92OHEEa9HXL2W4E7lf9JzCmGVUdgjX3N/iU=
+github.com/matryer/is v1.4.1 h1:55ehd8zaGABKLXQUe2awZ99BD/PTc2ls+KV/dXphgEQ=
+github.com/matryer/is v1.4.1/go.mod h1:8I/i5uYgLzgsgEloJE1U6xx5HkBQpAZvepWuujKwMRU=
+github.com/struct0x/envconfig v1.3.0 h1:7utpDbUVd6WNIdPw9GiO+PMMYL0UGoc35ZiTw4UrdPw=
+github.com/struct0x/envconfig v1.3.0/go.mod h1:1f390j2SSRxJkGXlALEvuzzoI5qVizIDx6M38IwjIsg=
+github.com/struct0x/exitplan v1.1.0 h1:kAi8FBUKrmg7fkTiuLn5Py2bxU+5mbqqWGLv+eSmvDE=
+github.com/struct0x/exitplan v1.1.0/go.mod h1:QB+vcln4bciJ+EvISVAzp5h02knokPcr8ZkeuRbHzbQ=
