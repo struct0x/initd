@@ -2,7 +2,7 @@ module github.com/struct0x/initd/initdops
 
 go 1.25.5
 
-require github.com/struct0x/initd v0.2.0
+require github.com/struct0x/initd v0.3.0
 
 require (
 	github.com/struct0x/envconfig v1.3.0 // indirect

@@ -3,7 +3,7 @@ module github.com/struct0x/initd/initdotel
 go 1.25.5
 
 require (
-	github.com/struct0x/initd v0.0.0
+	github.com/struct0x/initd v0.3.0
 	go.opentelemetry.io/otel v1.40.0
 	go.opentelemetry.io/otel/metric v1.40.0
 	go.opentelemetry.io/otel/sdk v1.40.0
