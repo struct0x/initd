@@ -156,8 +156,6 @@ func TestValue(t *testing.T) {
 			L(slog.LevelInfo, "initd: initialized").
 				With("service", "test-app").
 				With("version", "1.0.0"),
-			L(slog.LevelInfo, "starting").
-				With("component", "test-value"),
 			L(slog.LevelInfo, "ready").
 				With("component", "test-value"),
 		)
@@ -185,8 +183,6 @@ func TestValue(t *testing.T) {
 			L(slog.LevelInfo, "initd: initialized").
 				With("service", "test-app").
 				With("version", "1.0.0"),
-			L(slog.LevelInfo, "starting").
-				With("component", "test-value"),
 			L(slog.LevelError, "failed").
 				With("component", "test-value").
 				With("error", "test error"),
@@ -209,8 +205,6 @@ func TestValue(t *testing.T) {
 			L(slog.LevelInfo, "initd: initialized").
 				With("service", "test-app").
 				With("version", "1.0.0"),
-			L(slog.LevelInfo, "starting").
-				With("component", "panicking"),
 			L(slog.LevelError, "panic").
 				With("component", "panicking").
 				With("error", "boom"),

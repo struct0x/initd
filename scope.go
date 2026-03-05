@@ -83,7 +83,6 @@ func (s *Scope) run(name string, fn func(ctx context.Context) error) (err error)
 		}
 	}()
 
-	s.Logger.InfoContext(s.ctx, "started", "task", name)
 	err = fn(s.ctx)
 	return err
 }
@@ -144,7 +143,6 @@ func Value[T any](app *App, name string, fn func(*Scope) (T, error)) (val T, err
 	}
 
 	start := time.Now()
-	s.Logger.InfoContext(s.ctx, "starting")
 
 	defer func() {
 		if r := recover(); r != nil {
