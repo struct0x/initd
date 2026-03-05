@@ -96,7 +96,7 @@ func (s *Scope) run(name string, fn func(ctx context.Context) error) (err error)
 func (s *Scope) Run(task func(context.Context) error) error {
 	s.app.wg.Add(1)
 	go func() {
-		err := s.run(fmt.Sprintf("task %q", s.name), task)
+		err := s.run(s.name, task)
 		s.app.wg.Done()
 
 		if errors.Is(err, context.Canceled) {
