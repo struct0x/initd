@@ -14,7 +14,9 @@ import (
 	"errors"
 	"fmt"
 	"log/slog"
+	"sync"
 
+	"github.com/go-logr/logr"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/propagation"
@@ -98,6 +100,7 @@ func Setup(opts ...Option) func(*initd.Scope) error {
 
 		tp := sdktrace.NewTracerProvider(tpOpts...)
 		otel.SetTracerProvider(tp)
+		setOtelLogger(s)
 
 		prop := cfg.propagator
 		if prop == nil {
@@ -152,6 +155,15 @@ func (h *traceLogHandler) WithAttrs(attrs []slog.Attr) slog.Handler {
 
 func (h *traceLogHandler) WithGroup(name string) slog.Handler {
 	return &traceLogHandler{inner: h.inner.WithGroup(name)}
+}
+
+var otelLoggerOnce sync.Once
+
+// setOtelLogger routes OTel SDK internal logs to the scope's logger.
+func setOtelLogger(s *initd.Scope) {
+	otelLoggerOnce.Do(func() {
+		otel.SetLogger(logr.FromSlogHandler(s.Logger.Handler()))
+	})
 }
 
 func buildResource(cfg *config) (*resource.Resource, error) {

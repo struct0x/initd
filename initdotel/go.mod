@@ -3,6 +3,7 @@ module github.com/struct0x/initd/initdotel
 go 1.25.5
 
 require (
+	github.com/go-logr/logr v1.4.3
 	github.com/struct0x/initd v0.5.0
 	go.opentelemetry.io/otel v1.40.0
 	go.opentelemetry.io/otel/metric v1.40.0
@@ -13,7 +14,6 @@ require (
 
 require (
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
-	github.com/go-logr/logr v1.4.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/struct0x/envconfig v1.3.0 // indirect

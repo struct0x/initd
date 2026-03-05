@@ -42,6 +42,7 @@ func SetupMetrics(reader sdkmetric.Reader, opts ...Option) func(*initd.Scope) er
 			sdkmetric.WithResource(res),
 		)
 		otel.SetMeterProvider(mp)
+		setOtelLogger(s)
 
 		s.OnExit(func(ctx context.Context) error {
 			return mp.Shutdown(ctx)
