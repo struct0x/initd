@@ -76,6 +76,11 @@ func WithOnListen(fn func(net.Addr)) ServeOption {
 // goroutine, so by the time [initd.App.Run] returns the server is already
 // accepting connections.
 //
+// If srv.BaseContext is nil, Serve injects the scope's context values
+// (component name, etc.) so that [slog.InfoContext](r.Context(), ...) in
+// handlers automatically includes structured log attributes. If you set
+// srv.BaseContext yourself, Serve do not add its values.
+//
 // Defaults applied when the corresponding field on srv is zero:
 //
 //   - ReadHeaderTimeout: 5s   (Slowloris protection)
@@ -84,7 +89,7 @@ func WithOnListen(fn func(net.Addr)) ServeOption {
 //
 //   - MaxHeaderBytes:    1 MiB (header bomb protection)
 //
-//     err := initd.Exec(app, "http", initdhttp.Serve(srv))
+// err := initd.Exec(app, "http", initdhttp.Serve(srv))
 func Serve(srv *http.Server, opts ...ServeOption) func(*initd.Scope) error {
 	return func(s *initd.Scope) error {
 		cfg := &serveConfig{}
@@ -100,6 +105,13 @@ func Serve(srv *http.Server, opts ...ServeOption) func(*initd.Scope) error {
 		}
 		if srv.MaxHeaderBytes == 0 {
 			srv.MaxHeaderBytes = defaultMaxHeaderBytes
+		}
+
+		if srv.BaseContext == nil {
+			baseCtx := context.WithoutCancel(s.Context())
+			srv.BaseContext = func(net.Listener) context.Context {
+				return baseCtx
+			}
 		}
 
 		ln := cfg.listener

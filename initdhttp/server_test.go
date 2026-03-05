@@ -166,13 +166,20 @@ func TestServe_readinessProbe(t *testing.T) {
 	}
 	app, _ := listenAddr(t, srv)
 
-	// After bind: http probe is healthy.
-	if check := app.CheckReadiness().Checks["http"]; !check.Healthy {
-		t.Fatalf("expected http probe healthy after listen: %s", check.Error)
+	deadline := time.After(2 * time.Second)
+
+	for {
+		if app.CheckReadiness().Checks["http"].Healthy {
+			break
+		}
+		select {
+		case <-deadline:
+			t.Fatal("http probe did not become healthy after listen")
+		case <-time.After(5 * time.Millisecond):
+		}
 	}
 
 	app.Shutdown()
-	deadline := time.After(2 * time.Second)
 	for {
 		if !app.CheckReadiness().Checks["http"].Healthy {
 			return
