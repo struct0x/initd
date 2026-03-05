@@ -83,7 +83,7 @@ func TestClient_withTransportMiddleware(t *testing.T) {
 		initdhttp.WithTransport(base),
 		initdhttp.WithTransportMiddleware(func(rt http.RoundTripper) http.RoundTripper {
 			mwReceived = rt
-			return &trackingTransport{} // wrapped transport
+			return &trackingTransport{}
 		}),
 	))
 	if err != nil {

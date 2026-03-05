@@ -1,9 +1,3 @@
-// Package initdhttp provides an opinionated HTTP client for initd services.
-//
-//	client, err := initd.Value(app, "http", initdhttp.Client(
-//	    initdhttp.WithTimeout(10*time.Second),
-//	    initdhttp.WithTransportMiddleware(otelhttp.NewTransport), // or your own
-//	))
 package initdhttp
 
 import (
@@ -38,8 +32,7 @@ func WithTransport(rt http.RoundTripper) Option {
 // WithTransportMiddleware wraps the transport with the given middleware.
 // Use this to plug in tracing instrumentation from any provider:
 //
-//	initdhttp.WithTransportMiddleware(otelhttp.NewTransport)			// OTel
-//	initdhttp.WithTransportMiddleware(initddatadog.TransportMiddleware) // Datadog
+//	initdhttp.WithTransportMiddleware(otelhttp.NewTransport)
 func WithTransportMiddleware(mw func(http.RoundTripper) http.RoundTripper) Option {
 	return func(c *config) { c.transportMW = mw }
 }
